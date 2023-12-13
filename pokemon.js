@@ -6,6 +6,8 @@ setInterval(() => {
         pokname.textContent = pokemons[index].name;
         pokpower.textContent = pokemons[index].power;
 
+        // pokimg.style.viewTransitionName = '';
+
         index++;
 
         if (index === pokemons.length) {
@@ -13,6 +15,12 @@ setInterval(() => {
         }
     });
 }, 1000);
+
+function openPokemonDetails() {
+    document.startViewTransition(() => {
+        pokimg.style.viewTransitionName = 'full-embed';
+    });
+}
 
 var pokemons = [
   {

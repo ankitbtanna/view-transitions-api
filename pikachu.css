@@ -1,5 +1,6 @@
 @import "https://unpkg.com/open-props/easings.min.css";
 @import "https://unpkg.com/open-props/animations.min.css";
+@import "./pikachu-material-desigh.css";
 
 html, body {
     height: 100%;
@@ -26,12 +27,56 @@ body {
   view-transition-name: fade;
 }
 
-::view-transition-old(fade) {
-    animation: var(--animation-fade-out), var(--animation-scale-down);
+.profile {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ::view-transition-old(fade) {
+    animation: var(--animation-fade-out), var(--animation-scale-up);
+    animation-duration: 5s;
 }
 
 ::view-transition-new(fade) {
     animation: var(--animation-fade-out) reverse, var(--animation-slide-in-up);
+    animation-duration: 5s;
+} */
+
+::view-transition-old(fade) {
+  animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+    300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-top;
+}
+
+::view-transition-new(fade) {
+  animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+    300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-bottom;
+}
+
+.profile {
+    background-color: purple;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+
+    view-transition-name: profile-header;
+}
+
+::view-transition-old(profile-header) {
+  animation: none;
+}
+
+::view-transition-new(profile-header) {
+  animation: none;
+}
+
+::view-transition-old(full-embed) {
+    animation: var(--animation-fade-out), var(--animation-scale-down);
+}
+
+::view-transition-new(full-embed) {
+    animation: var(--animation-fade-out) reverse, var(--animation-scale-up);
 }
 
 /* On mouse-over, add a deeper shadow */
